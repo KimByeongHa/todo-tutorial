@@ -14,6 +14,7 @@ import { TodoCategoryFilter } from "@/components/todo-category-filter";
 import { TodoSort } from "@/components/todo-sort";
 import { TodoSearch } from "@/components/todo-search";
 import { TodoItem } from "@/components/todo-item";
+import { VintagePanel } from "@/components/vintage-panel";
 
 export function TodoList() {
   const { todos, loaded, addTodo, toggleTodo, deleteTodo, editTodo } =
@@ -39,32 +40,36 @@ export function TodoList() {
     <div className="flex flex-col gap-4">
       <TodoInput onAdd={addTodo} />
 
-      <TodoSearch value={query} onChange={setQuery} />
+      <VintagePanel className="flex flex-col gap-3">
+        <TodoSearch value={query} onChange={setQuery} />
 
-      <div className="flex flex-wrap items-center justify-between gap-2">
-        <TodoFilter value={filter} onChange={setFilter} />
-        <TodoSort value={sortBy} onChange={setSortBy} />
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <TodoFilter value={filter} onChange={setFilter} />
+          <TodoSort value={sortBy} onChange={setSortBy} />
+        </div>
+
+        <TodoCategoryFilter value={categoryFilter} onChange={setCategoryFilter} />
+      </VintagePanel>
+
+      <div className="border-2 border-t-black/60 border-l-black/60 border-r-white border-b-white bg-input">
+        {loaded && visibleTodos.length === 0 ? (
+          <p className="px-3 py-6 text-center text-sm text-muted-foreground">
+            아직 할 일이 없습니다. 위에 입력해 추가해보세요.
+          </p>
+        ) : (
+          <ul className="flex flex-col divide-y-2 divide-border">
+            {visibleTodos.map((todo) => (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                onToggle={toggleTodo}
+                onDelete={deleteTodo}
+                onEdit={editTodo}
+              />
+            ))}
+          </ul>
+        )}
       </div>
-
-      <TodoCategoryFilter value={categoryFilter} onChange={setCategoryFilter} />
-
-      {loaded && visibleTodos.length === 0 ? (
-        <p className="py-6 text-center text-sm text-muted-foreground">
-          아직 할 일이 없습니다. 위에 입력해 추가해보세요.
-        </p>
-      ) : (
-        <ul className="flex flex-col gap-2">
-          {visibleTodos.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onToggle={toggleTodo}
-              onDelete={deleteTodo}
-              onEdit={editTodo}
-            />
-          ))}
-        </ul>
-      )}
     </div>
   );
 }

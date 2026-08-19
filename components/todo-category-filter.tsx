@@ -1,7 +1,7 @@
 "use client";
 
 import { CATEGORY_FILTERS, type CategoryFilter } from "@/lib/types";
-import { Button } from "@/components/ui/button";
+import { VintageButton } from "@/components/vintage-button";
 
 interface TodoCategoryFilterProps {
   value: CategoryFilter;
@@ -17,7 +17,7 @@ export function TodoCategoryFilter({
       {CATEGORY_FILTERS.map((item) => {
         const selected = item.value === value;
         return (
-          <Button
+          <VintageButton
             key={item.value}
             type="button"
             size="sm"
@@ -27,7 +27,7 @@ export function TodoCategoryFilter({
             onClick={() => onChange(item.value)}
           >
             {item.label}
-          </Button>
+          </VintageButton>
         );
       })}
     </div>

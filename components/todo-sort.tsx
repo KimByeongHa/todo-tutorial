@@ -1,7 +1,7 @@
 "use client";
 
 import { SORT_OPTIONS, type SortBy } from "@/lib/types";
-import { Button } from "@/components/ui/button";
+import { VintageButton } from "@/components/vintage-button";
 
 interface TodoSortProps {
   value: SortBy;
@@ -14,7 +14,7 @@ export function TodoSort({ value, onChange }: TodoSortProps) {
       {SORT_OPTIONS.map((item) => {
         const selected = item.value === value;
         return (
-          <Button
+          <VintageButton
             key={item.value}
             type="button"
             size="sm"
@@ -24,7 +24,7 @@ export function TodoSort({ value, onChange }: TodoSortProps) {
             onClick={() => onChange(item.value)}
           >
             {item.label}
-          </Button>
+          </VintageButton>
         );
       })}
     </div>

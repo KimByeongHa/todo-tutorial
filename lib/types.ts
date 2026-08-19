@@ -27,18 +27,17 @@ export const PRIORITIES: PriorityMeta[] = [
   {
     value: "high",
     label: "높음",
-    badgeClass: "border-destructive/30 bg-destructive/10 text-destructive",
+    badgeClass: "border-destructive bg-destructive/20 text-destructive",
   },
   {
     value: "medium",
     label: "보통",
-    badgeClass:
-      "border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-500",
+    badgeClass: "border-warning bg-warning/20 text-warning",
   },
   {
     value: "low",
     label: "낮음",
-    badgeClass: "border-border bg-muted text-muted-foreground",
+    badgeClass: "border-success bg-success/20 text-success",
   },
 ];
 
@@ -61,19 +60,19 @@ export const CATEGORIES: CategoryMeta[] = [
     value: "work",
     label: "업무",
     badgeClass:
-      "border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400",
+      "border-blue-700 bg-blue-500/20 text-blue-700 dark:border-blue-300 dark:text-blue-300",
   },
   {
     value: "personal",
     label: "개인",
     badgeClass:
-      "border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+      "border-emerald-700 bg-emerald-500/20 text-emerald-700 dark:border-emerald-300 dark:text-emerald-300",
   },
   {
     value: "shopping",
     label: "쇼핑",
     badgeClass:
-      "border-violet-500/30 bg-violet-500/10 text-violet-600 dark:text-violet-400",
+      "border-violet-700 bg-violet-500/20 text-violet-700 dark:border-violet-300 dark:text-violet-300",
   },
 ];
 

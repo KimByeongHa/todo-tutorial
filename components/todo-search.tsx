@@ -1,6 +1,6 @@
 "use client";
 
-import { Input } from "@/components/ui/input";
+import { VintageInput } from "@/components/vintage-input";
 
 interface TodoSearchProps {
   value: string;
@@ -9,7 +9,7 @@ interface TodoSearchProps {
 
 export function TodoSearch({ value, onChange }: TodoSearchProps) {
   return (
-    <Input
+    <VintageInput
       type="search"
       value={value}
       onChange={(e) => onChange(e.target.value)}

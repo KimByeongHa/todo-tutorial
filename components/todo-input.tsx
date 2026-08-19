@@ -8,15 +8,9 @@ import {
   type Category,
   type Priority,
 } from "@/lib/types";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { VintageButton } from "@/components/vintage-button";
+import { VintageInput } from "@/components/vintage-input";
+import { VintagePanel } from "@/components/vintage-panel";
 
 interface TodoInputProps {
   onAdd: (
@@ -46,82 +40,76 @@ export function TodoInput({ onAdd }: TodoInputProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Card>
-        <CardHeader>
-          <CardTitle>할 일 추가</CardTitle>
-        </CardHeader>
+      <VintagePanel className="flex flex-col gap-3">
+        <p className="font-heading text-sm font-bold">할 일 추가</p>
 
-        <CardContent className="flex flex-col gap-3">
-          <Input
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="할 일을 입력하고 Enter를 누르세요"
-            aria-label="새 할 일"
-          />
+        <VintageInput
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder="할 일을 입력하고 Enter를 누르세요"
+          aria-label="새 할 일"
+        />
 
-          <Input
-            type="date"
-            value={dueDate}
-            onChange={(e) => setDueDate(e.target.value)}
-            aria-label="마감일"
-            className="w-auto"
-          />
+        <VintageInput
+          type="date"
+          value={dueDate}
+          onChange={(e) => setDueDate(e.target.value)}
+          aria-label="마감일"
+          className="w-auto"
+        />
 
-          <div role="radiogroup" aria-label="우선순위" className="flex gap-1">
-            {PRIORITIES.map((item) => {
-              const selected = item.value === priority;
-              return (
-                <Button
-                  key={item.value}
-                  type="button"
-                  size="sm"
-                  variant={selected ? "default" : "outline"}
-                  role="radio"
-                  aria-checked={selected}
-                  onClick={() => setPriority(item.value)}
-                >
-                  {item.label}
-                </Button>
-              );
-            })}
-          </div>
+        <div role="radiogroup" aria-label="우선순위" className="flex gap-1">
+          {PRIORITIES.map((item) => {
+            const selected = item.value === priority;
+            return (
+              <VintageButton
+                key={item.value}
+                type="button"
+                size="sm"
+                variant={selected ? "default" : "outline"}
+                role="radio"
+                aria-checked={selected}
+                onClick={() => setPriority(item.value)}
+              >
+                {item.label}
+              </VintageButton>
+            );
+          })}
+        </div>
 
-          <div role="radiogroup" aria-label="카테고리" className="flex gap-1">
-            <Button
-              type="button"
-              size="sm"
-              variant={category === undefined ? "default" : "outline"}
-              role="radio"
-              aria-checked={category === undefined}
-              onClick={() => setCategory(undefined)}
-            >
-              없음
-            </Button>
-            {CATEGORIES.map((item) => {
-              const selected = item.value === category;
-              return (
-                <Button
-                  key={item.value}
-                  type="button"
-                  size="sm"
-                  variant={selected ? "default" : "outline"}
-                  role="radio"
-                  aria-checked={selected}
-                  onClick={() => setCategory(item.value)}
-                >
-                  {item.label}
-                </Button>
-              );
-            })}
-          </div>
-        </CardContent>
+        <div role="radiogroup" aria-label="카테고리" className="flex gap-1">
+          <VintageButton
+            type="button"
+            size="sm"
+            variant={category === undefined ? "default" : "outline"}
+            role="radio"
+            aria-checked={category === undefined}
+            onClick={() => setCategory(undefined)}
+          >
+            없음
+          </VintageButton>
+          {CATEGORIES.map((item) => {
+            const selected = item.value === category;
+            return (
+              <VintageButton
+                key={item.value}
+                type="button"
+                size="sm"
+                variant={selected ? "default" : "outline"}
+                role="radio"
+                aria-checked={selected}
+                onClick={() => setCategory(item.value)}
+              >
+                {item.label}
+              </VintageButton>
+            );
+          })}
+        </div>
 
-        <CardFooter>
-          <Button type="submit" className="w-full">
-            추가
-          </Button>
-        </CardFooter>
-      </Card>
+        <VintageButton type="submit" className="w-full">
+          추가
+        </VintageButton>
+      </VintagePanel>
     </form>
   );
 }

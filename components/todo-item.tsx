@@ -8,9 +8,9 @@ import {
   PRIORITY_META,
   type Todo,
 } from "@/lib/types";
-import { Button } from "@/components/ui/button";
+import { VintageButton } from "@/components/vintage-button";
+import { VintageInput } from "@/components/vintage-input";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 interface TodoItemProps {
@@ -63,15 +63,16 @@ export function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemProps) {
   const category = todo.category ? CATEGORY_META[todo.category] : undefined;
 
   return (
-    <li className="flex items-center gap-3 rounded-md border border-border px-3 py-2">
+    <li className="flex items-center gap-3 px-3 py-2 hover:bg-primary/10">
       <Checkbox
         checked={todo.completed}
         onCheckedChange={() => onToggle(todo.id)}
         aria-label={todo.completed ? "완료 취소" : "완료로 표시"}
+        className="rounded-none"
       />
 
       {editing ? (
-        <Input
+        <VintageInput
           ref={inputRef}
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
@@ -93,7 +94,7 @@ export function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemProps) {
       )}
 
       {todo.dueDate && (
-        <span className="shrink-0 text-xs text-muted-foreground tabular-nums">
+        <span className="shrink-0 font-mono text-xs text-muted-foreground tabular-nums">
           {todo.dueDate}
         </span>
       )}
@@ -101,7 +102,7 @@ export function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemProps) {
       {category && (
         <span
           className={cn(
-            "shrink-0 rounded-full border px-2 py-0.5 text-[0.625rem] font-medium leading-none",
+            "shrink-0 border-2 px-1.5 py-0.5 text-[0.625rem] font-bold leading-none",
             category.badgeClass
           )}
         >
@@ -111,14 +112,14 @@ export function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemProps) {
 
       <span
         className={cn(
-          "shrink-0 rounded-full border px-2 py-0.5 text-[0.625rem] font-medium leading-none",
+          "shrink-0 border-2 px-1.5 py-0.5 text-[0.625rem] font-bold leading-none",
           priority.badgeClass
         )}
       >
         {priority.label}
       </span>
 
-      <Button
+      <VintageButton
         type="button"
         variant="ghost"
         size="icon"
@@ -127,7 +128,7 @@ export function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemProps) {
         aria-label="삭제"
       >
         <XIcon />
-      </Button>
+      </VintageButton>
     </li>
   );
 }
