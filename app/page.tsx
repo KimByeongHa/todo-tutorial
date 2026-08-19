@@ -6,9 +6,9 @@ export default function Page() {
     <div className="flex min-h-svh justify-center p-6">
       <div className="flex w-full max-w-md min-w-0 flex-col">
         <VintagePanel className="p-0" role="group" aria-label="오늘의 할 일 앱">
-          <div className="flex items-center gap-2 border-b-2 border-b-black/60 bg-primary px-3 py-1.5 text-primary-foreground">
+          <div className="flex items-center gap-2 border-b-2 border-b-black/60 bg-accent px-3 py-1.5 text-accent-foreground">
             <span aria-hidden>💾</span>
-            <h1 className="font-heading text-sm font-bold tracking-wide">
+            <h1 className="font-heading text-base font-bold tracking-widest">
               오늘의 할 일
             </h1>
           </div>

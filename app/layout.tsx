@@ -1,18 +1,19 @@
 import type { Metadata } from "next"
-import { JetBrains_Mono, Silkscreen } from "next/font/google"
+import { Black_Han_Sans, Nanum_Gothic_Coding } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
 
-const silkscreen = Silkscreen({
+const blackHanSans = Black_Han_Sans({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: "400",
   variable: "--font-display",
 })
 
-const fontMono = JetBrains_Mono({
+const fontMono = Nanum_Gothic_Coding({
   subsets: ["latin"],
+  weight: ["400", "700"],
   variable: "--font-mono",
 })
 
@@ -31,7 +32,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, silkscreen.variable, "font-sans")}
+      className={cn("antialiased", fontMono.variable, blackHanSans.variable, "font-sans")}
     >
       <body>
         <ThemeProvider>{children}</ThemeProvider>

@@ -41,7 +41,7 @@ export function TodoInput({ onAdd }: TodoInputProps) {
   return (
     <form onSubmit={handleSubmit}>
       <VintagePanel className="flex flex-col gap-3">
-        <p className="font-heading text-sm font-bold">할 일 추가</p>
+        <p className="font-heading text-base font-bold tracking-wide">할 일 추가</p>
 
         <VintageInput
           value={value}
